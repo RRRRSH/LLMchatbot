@@ -1,17 +1,14 @@
 import streamlit as st
-from aliyun_llm import AliyunLLM
+from support.aliyun_llm import AliyunLLM
+from support.aliyun_embedding import AliyunEmbeddings
 import os
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableBranch, RunnablePassthrough
 import sys
 # 获取当前脚本所在目录的绝对路径
-current_dir = os.path.dirname(os.path.abspath(__file__))
-# 拼接 support 目录的绝对路径
-support_dir = os.path.join(current_dir, "../support")
-# 添加到系统路径
-sys.path.append(support_dir)
-from aliyun_embedding import AliyunEmbeddings
+
+
 from langchain_community.vectorstores import Chroma
 
 def get_retriever():
