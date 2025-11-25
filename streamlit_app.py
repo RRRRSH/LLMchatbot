@@ -6,7 +6,6 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableBranch, RunnablePassthrough
 import sys
-# 获取当前脚本所在目录的绝对路径
 
 
 from langchain_community.vectorstores import Chroma

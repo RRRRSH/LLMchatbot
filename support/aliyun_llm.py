@@ -40,7 +40,7 @@ class AliyunLLM(BaseChatModel):
         messages_dict = [_convert_message_to_dict(message) for message in messages]
         
         client = OpenAI(
-            api_key=self.api_key or os.getenv("sk-d4154c2081e74530bcb930ed3667f3ce"),
+            api_key=self.api_key or os.getenv("DASHSCOPE_API_KEY"),
             base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
         )
 

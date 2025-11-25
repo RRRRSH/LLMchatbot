@@ -15,7 +15,7 @@ class AliyunEmbeddings(Embeddings):
         实例化 AliyunEmbeddings
         """
         self.client = OpenAI(
-            api_key=os.getenv("sk-d4154c2081e74530bcb930ed3667f3ce"),
+            api_key=os.getenv("DASHSCOPE_API_KEY"),
             base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
         )
         self.model = "text-embedding-v4"
