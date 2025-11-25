@@ -4,8 +4,9 @@ import os
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
 import os
+import streamlit as st
 
-_ = load_dotenv(find_dotenv())    # read local .env file
+""" _ = load_dotenv(find_dotenv())    # read local .env file """
 
 class AliyunEmbeddings(Embeddings):
     """`Aliyun Embeddings` embedding models."""
@@ -14,8 +15,9 @@ class AliyunEmbeddings(Embeddings):
         """
         实例化 AliyunEmbeddings
         """
+
         self.client = OpenAI(
-            api_key=os.getenv("DASHSCOPE_API_KEY"),
+            api_key=st.secrets["DASHSCOPE_API_KEY"] if "DASHSCOPE_API_KEY" in st.secrets else os.getenv("DASHSCOPE_API_KEY"),
             base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
         )
         self.model = "text-embedding-v4"

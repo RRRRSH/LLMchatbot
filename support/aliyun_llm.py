@@ -1,5 +1,6 @@
 from typing import Any, Dict, Iterator, List, Optional
 import os
+import streamlit as st
 from openai import OpenAI
 from langchain_core.callbacks import (
     CallbackManagerForLLMRun,
@@ -40,7 +41,7 @@ class AliyunLLM(BaseChatModel):
         messages_dict = [_convert_message_to_dict(message) for message in messages]
         
         client = OpenAI(
-            api_key=self.api_key or os.getenv("DASHSCOPE_API_KEY"),
+            api_key=self.api_key or os.getenv("DASHSCOPE_API_KEY") or (st.secrets["DASHSCOPE_API_KEY"] if "DASHSCOPE_API_KEY" in st.secrets else None),
             base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
         )
 
